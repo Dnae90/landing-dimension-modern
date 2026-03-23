@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* ===== Custom Theme ===== */
+@theme {
+  --color-dim-bg: #1b1f22;
+  --color-dim-bg-alt: #000000;
+  --color-dim-overlay: rgba(19, 21, 25, 0.5);
+  --color-dim-article: rgba(27, 31, 34, 0.85);
+  --color-dim-white: #ffffff;
+  --color-dim-border: rgba(255, 255, 255, 1);
+  --color-dim-hover: rgba(255, 255, 255, 0.075);
+  --color-dim-active: rgba(255, 255, 255, 0.175);
+  --color-dim-placeholder: rgba(255, 255, 255, 0.5);
+
+  --font-sans: "Source Sans Pro", sans-serif;
+
+  --animate-duration-fast: 0.2s;
+  --animate-duration-article: 0.325s;
+  --animate-duration-bg: 2.5s;
+  --animate-duration-intro: 0.75s;
+}
+
+/* ===== Base Reset ===== */
+html {
+  font-size: 16pt;
+}
+
+@media (max-width: 1680px) {
+  html { font-size: 12pt; }
+}
+@media (max-width: 736px) {
+  html { font-size: 11pt; }
+}
+@media (max-width: 360px) {
+  html { font-size: 10pt; }
+}
+
+body {
+  background: var(--color-dim-bg);
+  color: var(--color-dim-white);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Typography ===== */
+a {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+  border-bottom: dotted 1px var(--color-dim-placeholder);
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  border-bottom-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-dim-white);
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+p {
+  margin: 0 0 2rem 0;
+}
+
+/* ===== Form ===== */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  appearance: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  background: transparent;
+  border-radius: 4px;
+  border: solid 1px var(--color-dim-white);
+  color: inherit;
+  display: block;
+  outline: 0;
+  padding: 0 1rem;
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  background: var(--color-dim-hover);
+  border-color: var(--color-dim-white);
+  box-shadow: 0 0 0 1px var(--color-dim-white);
+}
+
+input[type="text"],
+input[type="email"] {
+  height: 2.75rem;
+}
+
+textarea {
+  padding: 0.75rem 1rem;
+}
+
+label {
+  color: var(--color-dim-white);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.2rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+}
+
+::placeholder {
+  color: var(--color-dim-placeholder) !important;
+  opacity: 1;
+}
+
+/* ===== Button ===== */
+input[type="submit"],
+input[type="reset"],
+button,
+.button {
+  appearance: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--color-dim-white);
+  color: var(--color-dim-white) !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 300;
+  height: 2.75rem;
+  letter-spacing: 0.2rem;
+  line-height: 2.75rem;
+  outline: 0;
+  padding: 0 1.25rem 0 1.35rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: var(--color-dim-hover);
+}
+
+input[type="submit"]:active,
+button:active {
+  background-color: var(--color-dim-active);
+}
+
+.button-special {
+  background-color: var(--color-dim-white);
+  color: var(--color-dim-bg) !important;
+  font-weight: 600;
+}
+
+/* ===== Suppress loading animations ===== */
+.is-loading *,
+.is-loading *::before,
+.is-loading *::after {
+  animation: none !important;
+  transition: none !important;
+}
