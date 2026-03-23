@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import Image from "next/image";
 import { X, Facebook, Instagram, Linkedin } from "lucide-react";
@@ -46,6 +47,17 @@ function SocialIcon({ href, icon: Icon, label }: { href: string; icon: React.Ele
 }
 
 export default function Articles({ activeArticle, onClose }: ArticleProps) {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && activeArticle) {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeArticle, onClose]);
+
   return (
     <div
       className={`absolute inset-0 z-[10] overflow-y-auto overflow-x-hidden ${
